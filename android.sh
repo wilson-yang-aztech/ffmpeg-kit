@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 编译命令
+# ./android.sh --enable-fontconfig --disable-arm-v7a-neon
+
 if [[ -z ${ANDROID_SDK_ROOT} ]]; then
   echo -e "\n(*) ANDROID_SDK_ROOT not defined\n"
   exit 1
