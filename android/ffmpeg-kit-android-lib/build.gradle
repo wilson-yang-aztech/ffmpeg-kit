@@ -1,11 +1,12 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     if (project.android.hasProperty("namespace")) {
         namespace 'com.arthenica.ffmpegkit'
     }
     compileSdk 35
-    ndkVersion "28.1.13356709"
+    ndkVersion "25.1.8937393"
 
     defaultConfig {
         minSdk 24
@@ -63,4 +64,17 @@ dependencies {
     api 'com.arthenica:smart-exception-java:0.2.1'
     testImplementation "androidx.test.ext:junit:1.1.5"
     testImplementation 'org.json:json:20230618'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.arthenica'
+                artifactId = 'ffmpeg-kit-full'
+                version = '6.0.2-16KB'
+            }
+        }
+    }
 }
